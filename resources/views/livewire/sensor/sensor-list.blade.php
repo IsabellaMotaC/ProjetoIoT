@@ -24,11 +24,11 @@
             <div class="shadow rounded-3 row mb-4">
 
                 <div class="card-header d-flex justify-content-between alingn-items-center text-white"
-                    style="background-color: rgb(0, 0, 0)">
+                   style="background-color: rgb(47, 75, 218)">
 
                     <h5 class="mb-0">Sensores</h5>
 
-                    <a href="{{ route('sensor.create') }}" class="btn btn-primary btn-sm">
+                    <a href="{{ route('sensor.create') }}" class="btn btn-light">
 
                         <i class="bi bi-plus-circle"></i>
 
@@ -77,11 +77,11 @@
 
 
                                          <a href="{{ route('sensor.edit', $sensor->id) }}"
-                                            class="btn btn-sm btn-warning">
+                                            class="btn btn-outline-primary">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                         <button wire:click="delete({{$sensor->id}})"
-                                            class="btn btn-sm btn-danger"wire:confirm = "Tem Certeza Que Deseja Excluir?">
+                                            class="btn btn-outline-danger"wire:confirm = "Tem Certeza Que Deseja Excluir?">
                                             <i class="bi bi-trash"></i>
                                             
                                         </button>
