@@ -4,6 +4,8 @@
 
             <div class="d-flex justify-content-between align-items-center mb-3 ">
 
+                
+
                 <form class="d-flex">
 
                     <input class="form-control me-4 " type="search" name="search" placeholder="Buscar por Sensor"
@@ -12,7 +14,9 @@
                     <button class="btn btn-outline-primary" type="submit">Buscar</button>
 
                 </form>
+
             </div>
+            
         </div>
 
         <div class="card">
@@ -37,7 +41,7 @@
 
 
             <div class="card-body">
-
+               
 
                 @if (session()->has('error'))
                     <div class="alert alert-danger">
@@ -52,41 +56,52 @@
                                 <th>ID</th>
                                 <th>Código</th>
                                 <th>Tipo</th>
-                                <th>Status</th>
                                 <th>Descrição</th>
                                 <th>Status</th>
+                                
 
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @forelse($sensor as $s)
+                            @forelse($sensores as $sensor)
                                 <tr>
-                                    <td>{{ $s->id }}</td>
-                                    <td>{{ $s->descricao }}</td>
-                                    <td>{{ $s->status }}</td>
-
+                                    <td>{{ $sensor->id }}</td>
+                                    <td>{{ $sensor->codigo }}</td>
+                                    <td>{{ $sensor->tipo }}</td>
+                                    <td>{{ $sensor->descricao }}</td>
+                                    <td>{{ $sensor->status }}</td>
+                                   
                                     <td>
 
-                                        <a href="{{ route('sensor.edit', $s->id) }}" class="btn btn-sm btn-warning">
+
+                                         <a href="{{ route('sensor.edit', $sensor->id) }}"
+                                            class="btn btn-sm btn-warning">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-
+                                        <button wire:click="delete({{$sensor->id}})"
+                                            class="btn btn-sm btn-danger"wire:confirm = "Tem Certeza Que Deseja Excluir?">
+                                            <i class="bi bi-trash"></i>
+                                            
+                                        </button>
+    
 
 
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="text-center">Nenhum sensor encontrado.</td>
+                                    <td colspan="5" class="text-center">Nenhum Sensor Encontrado</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
 
-               
+                <div class="mt-3">
+                    {{ $sensores->links() }}
+                </div>
             </div>
 
         </div>

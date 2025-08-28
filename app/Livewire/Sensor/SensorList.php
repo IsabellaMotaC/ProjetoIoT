@@ -10,24 +10,30 @@ class SensorList extends Component
 {
 
     public $search = '';
-    public $perPage = 10;
+    public $perPage = 15;
 
     protected $queryString = [
         'search' => ['except' => ''],
-        'perPage' => ['except' => 10],
+        'perPage' => ['except' => 15],
     ];
 
 
     public function render()
     {
-        $sensor = Sensor::all();
+        $sensores = Sensor::where('codigo', 'like', "%{$this->search}%")
+            ->orWhere('tipo', 'like', "%{$this->search}%")
+            ->orWhere('descricao', 'like', "%{$this->search}%")
+            ->orWhere('status', 'like', "%{$this->search}%")
+            ->paginate($this->perPage);
         
-        // $sensor = Sensor::where('nome', 'like', "%{$this->search}%")
-            // ->orWhere('descricao', 'like', "%{$this->search}%")
-            // ->orWhere('status', 'like', "%{$this->search}%")
-            // ->paginate($this->perPage);
-
-        return view('livewire.sensor.sensor-list', compact('sensor'));
+       
+    
+        return view('livewire.sensor.sensor-list', compact('sensores'));
+    }
+      public function delete($id)
+    {
+        Sensor::findOrFail($id)->delete();
+        session()->flash('message', 'Sensor deletado com sucesso');
     }
 
 }

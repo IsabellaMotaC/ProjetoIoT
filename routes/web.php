@@ -9,5 +9,5 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('sensor')->group(function () {
     Route::get('/index', SensorList::class)->name('sensor.index');
     Route::get('/create', SensorCreate::class)->name('sensor.create');
-    Route::get('/edit', SensorEdit::class)->name('sensor.edit');
+    Route::get('/edit/{id}', SensorEdit::class)->name('sensor.edit');
 });
