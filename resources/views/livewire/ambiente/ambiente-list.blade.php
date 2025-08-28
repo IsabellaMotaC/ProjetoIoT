@@ -20,11 +20,11 @@
             <div class="shadow rounded-3 row mb-4">
 
                 <div class="card-header d-flex justify-content-between alingn-items-center text-white"
-                    style="background-color: rgb(0, 0, 0)">
+                    style="background-color: rgb(47, 75, 218)">
 
                     <h5 class="mb-0">Ambientes</h5>
 
-                    <a href="{{ route('ambiente.create') }}" class="btn btn-primary btn-sm">
+                    <a href="{{ route('ambiente.create') }}" class="btn btn-light">
 
                         <i class="bi bi-plus-circle"></i>
 
@@ -62,21 +62,27 @@
                                 <tr>
                                     <td>{{ $ambiente->nome }}</td>
                                     <td>{{ $ambiente->descricao }}</td>
-                                    <td>{{ $ambiente->status }}</td>
+                                    <td>{{$ambiente->status == 1 ? 'Ativo' : 'Inativo'}}</td>
 
                                     <td>
 
-                                        <a href="{{ route('ambiente.edit', $ambiente->id) }}" class="btn btn-sm btn-warning">
+                                        <a href="{{ route('ambiente.edit', $ambiente->id) }}" class="btn btn-outline-primary">
                                             <i class="bi bi-pencil"></i>
                                         </a>
 
+                                         <button wire:click="delete({{ $ambiente->id }})"
+                                            class="btn btn-outline-danger" onclick="return confirm('Tem certeza?')">
+
+                                            <i class="bi bi-trash"></i>
+
+                                        </button>
 
 
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5" class="text-center">Nenhum ambiente encontrado.</td>
+                                    <td colspan="5" class="text-center">Nenhum Ambiente Encontrado.</td>
                                 </tr>
                             @endforelse
                         </tbody>

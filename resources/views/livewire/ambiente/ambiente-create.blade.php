@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="row align-items-center">
                         <div class="col">
-                            <div class="card  bor" style="width: 30rem;" class="mb-10">
+                            <div class="card-header-info" style="width: 30rem; " class="mb-10">
                                 <div class="card-body">
                                     @if (session()->has('success'))
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -23,7 +23,7 @@
                                         <div class="card-body">
                                             <form wire:submit.prevent="store">
                                                 <div class="mb-3">
-                                                    <label for="nome" class="form-label">Nome</label>
+                                                    <label for="nome" class="form-label">Nome:</label>
 
                                                     <input type="text" class="form-control" id="nome"
                                                         nome="nome" placeholder="Ex.: Nome" wire:model.defer="nome">
@@ -34,7 +34,7 @@
 
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="descricao">Descrição</label>
+                                                    <label for="descricao">Descrição:</label>
                                                     <input type="text" class="form-control" id="descricao"
                                                         nome="cpf" placeholder="Ex.: Descrição"
                                                         wire:model.defer="descricao">
@@ -44,18 +44,15 @@
                                                     @enderror
                                                 </div>
 
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault1">
-                                                    <label class="form-check-label" for="radioDefault1">
-                                                      Ativo
-                                                    </label>
-                                                  </div>
-                                                  <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="radioDefault" id="radioDefault2" checked>
-                                                    <label class="form-check-label" for="radioDefault2">
-                                                      Inativo
-                                                    </label>
-                                                  </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">status</label>
+                                                    <select class="form-select" wire:model.defer="status">
+                                                        <option selected>EX:</option>
+                                                        <option value="ativo">ativo</option>
+                                                        <option value="inativo">inativo</option>
+                                                    </select>
+
+                                                </div>
 
                                                 <div class="mb-3">
                                                     <button type="submit" class="btn btn-success">Cadastrar</button>

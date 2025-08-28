@@ -8,6 +8,6 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('ambiente')->group(function () {
     Route::get('/index', AmbienteList::class)->name('ambiente.index');
     Route::get('/create', AmbienteCreate::class)->name('ambiente.create');
-    Route::get('/edit', AmbienteEdit::class)->name('ambiente.edit');
+    Route::get('/edit/{id}', AmbienteEdit::class)->name('ambiente.edit');
 
 });
