@@ -44,14 +44,19 @@
                                                     @enderror
                                                 </div>
 
-                                                <div class="mb-3">
-                                                    <label class="form-label fw-bold">status</label>
-                                                    <select class="form-select" wire:model.defer="status">
-                                                        <option selected>EX:</option>
-                                                        <option value="ativo">ativo</option>
-                                                        <option value="inativo">inativo</option>
-                                                    </select>
+                                                 <div class="mb-3">
+                                                    <label for="status">Status:</label>
 
+                                                    @error('status')
+                                                        <span class="text-danger small">{{ $message }}</span>
+                                                    @enderror
+
+                                                </div>
+
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" role="switch"
+                                                        id="status" wire:model.defer="status">
+                                                    <label class="form-check-label" for="status">Ativo/Inativo</label>
                                                 </div>
 
                                                 <div class="mb-3">

@@ -9,7 +9,7 @@ use Livewire\Component;
 class SensorCreate extends Component
 {
 
-    public $ambiente_id, $descricao, $codigo, $tipo, $status, $sensor;
+    public $ambiente_id, $descricao, $codigo, $tipo, $status, $sensor, $id;
 
     protected $rules = [
         'ambiente_id' => 'required',
