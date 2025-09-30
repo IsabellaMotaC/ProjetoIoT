@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Livewire\Ambiente\AmbienteCreate;
 use App\Livewire\Ambiente\AmbienteEdit;
 use App\Livewire\Ambiente\AmbienteList;
@@ -11,3 +12,9 @@ Route::prefix('ambiente')->group(function () {
     Route::get('/edit/{id}', AmbienteEdit::class)->name('ambiente.edit');
 
 });
+
+use App\Livewire\Dashboard;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', Dashboard::class);
+
