@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class DispositivoController extends Controller
 {
-    public function show(Request $request){
-        $sensor = Sensor::where('codigo', $request->codigo)->first();
+    public function show($codigo){
+        $sensor = Sensor::where('codigo', $codigo)->first();
         if(!$sensor){
             return response()->json([ 'error' => 'Sensor não Encontrado'], 404);
         }

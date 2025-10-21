@@ -11,4 +11,4 @@ Route::get('sensor/show', [DispositivoController::class, "show"]);
 
 Route::get('sensor/update', [DispositivoController::class, "update"]);
 
-
+Route::get('sensor/findbycod/{codigo}', [DispositivoController::class, "show"]);
