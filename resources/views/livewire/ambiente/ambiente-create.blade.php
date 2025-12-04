@@ -44,19 +44,22 @@
                                                     @enderror
                                                 </div>
 
-                                                 <div class="mb-3">
-                                                    <label for="status">Status:</label>
+                                                <div class="mb-3">
+                                                    <span style="font-size:20px">
+                                                        <i class="bi bi-briefcase-fill"></i>
+                                                        <label for="status" class="form-label">Status</label>
+                                                    </span>
 
+                                                    <select class="form-select"
+                                                        aria-label="default-select example"@error('status') is-invalid @enderror
+                                                        id="status" wire:model.defer="status" placeholder="">
+                                                        <option hidden></option>
+                                                        <option value="1">Ativo</option>
+                                                        <option value="0">Inativo</option>
+                                                    </select>
                                                     @error('status')
-                                                        <span class="text-danger small">{{ $message }}</span>
+                                                        <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
-
-                                                </div>
-
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" role="switch"
-                                                        id="status" wire:model.defer="status">
-                                                    <label class="form-check-label" for="status">Ativo/Inativo</label>
                                                 </div>
 
                                                 <div class="mb-3">
